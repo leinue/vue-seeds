@@ -1,5 +1,15 @@
 <template>
 
+	<div id="alert-success" role="alert" class="alert alert-success top displaynone" style="width: 400px;"><button @click="hideThisSuccessAlert()" type="button" class="close"><span>×</span></button><span class="glyphicon glyphicon-ok-sign"></span>
+		  <strong>提示信息</strong>
+		  <p id="success-tips"></p>
+	</div>
+
+	<div id="alert-danger" role="alert" class="alert alert-danger top displaynone" style="width: 400px;"><button @click="hideThisDangerAlert()" type="button" class="close"><span>×</span></button><span class="glyphicon glyphicon-info-sign"></span>
+		  <strong>服务器提了一个问题</strong>
+		  <p id="danger-tips"></p>
+	</div>
+
     <div class="notification-center {{boncein}}">
     	<ul>
     		<li v-for="noti in notificationsList">
@@ -109,6 +119,26 @@
 			pathToAndCloseThis: function(path) {
 				this.pathTo(path);
 				this.showRight = false;
+			},
+
+			hideThisDangerAlert: function() {
+				var alertDanger = document.getElementById('alert-danger');
+				var cls = alertDanger.getAttribute('class');
+				var cls = cls.split(' ');
+				var i = cls.indexOf('fade-enter');
+				cls.splice(i, 1);
+				cls.push('fade-leave');
+				alertDanger.setAttribute('class', cls.join(' '));
+			},
+
+			hideThisSuccessAlert: function() {
+				var alertSuccess = document.getElementById('alert-success');
+				var cls = alertSuccess.getAttribute('class');
+				var cls = cls.split(' ');
+				var i = cls.indexOf('fade-enter');
+				cls.splice(i, 1);
+				cls.push('fade-leave');
+				alertSuccess.setAttribute('class', cls.join(' '));
 			}
 
 		},

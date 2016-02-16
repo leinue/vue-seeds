@@ -78,10 +78,22 @@ module.exports = {
 		return true;
 	},
 
-	messageBox: function(message) {
-		alert(message);
-	},
+	messageBox: function(message, danger) {
+		var boxId = danger ? 'alert-danger' : 'alert-success';
+		var tipsId = danger ? 'danger-tips' : 'success-tips';
 
+		var alertSuccess = document.getElementById(boxId);
+		var cls = alertSuccess.getAttribute('class');
+		var cls = cls.split(' ');
+		var i = cls.indexOf('displaynone');
+		cls.splice(i, 1);
+		cls.push('fade-enter');
+		var cls = cls.join(' ');
+		alertSuccess.setAttribute('class', cls);
+		var tips = document.getElementById(tipsId);
+		tips.innerHTML = message;
+	},
+	
 	confirm: function(content) {
 		return confirm(content);
 	},

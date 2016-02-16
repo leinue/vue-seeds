@@ -14,6 +14,36 @@ button.btn {
 	padding: 8px 8px;
 }
 
+.displaynone {
+	display: none!important;
+}
+
+.fade-leave {
+	animation: bouncein .6s linear 0s 1 alternate;
+	display: none;
+}
+
+.fade-enter {
+	animation: bounceinT 1.2s linear 0s 1 alternate;
+	opacity: 1;
+}
+
+.alert {
+	z-index: 65535;
+	height: auto;
+}
+
+.alert p {
+	font-size: 14px!important;
+	line-height: 24px;
+}
+
+.alert span.glyphicon {
+	font-size: 32px;
+	float: left;
+	margin-right: 15px;
+}
+
 ul {
 	list-style: none;
 }
